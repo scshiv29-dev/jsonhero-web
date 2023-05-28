@@ -1,5 +1,5 @@
 /**
- * @type {import('@remix-run/dev/config').AppConfig}
+ * @type {import('@remix-run/dev).AppConfig}
  */
 module.exports = {
   appDirectory: "app",
@@ -8,5 +8,11 @@ module.exports = {
   serverBuildTarget: "cloudflare-workers",
   serverBuildPath: "build/index.js",
   devServerBroadcastDelay: 1000,
-  ignoredRouteFiles: [".*"],
+  ignoredRouteFiles: [".*"], 
+   serverMainFields: ['browser', 'module', 'main'],
+  serverConditions: ['worker', process.env.NODE_ENV],
+serverDependenciesToBundle: [/.*/],
+  future: {
+    v2_errorBoundary:true
+  },
 };

@@ -1,4 +1,4 @@
-import { ActionFunction, json } from "remix";
+import { ActionFunction, json } from "@remix-run/node";
 import invariant from "tiny-invariant";
 import { sendEvent } from "~/graphJSON.server";
 import { updateDocument } from "~/jsonDoc.server";
@@ -15,7 +15,7 @@ export const action: ActionFunction = async ({ params, request, context }) => {
 
     if (!document) return json({ error: "No document with that slug" });
 
-    context.waitUntil(
+   context.waitUntil(
       sendEvent({
         type: "update-doc",
         id: document.id,
